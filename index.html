@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Agathe Monmont</title>
+<meta name="description" content="Agathe Monmont, AI and innovation consultant based in London. Ex TikTok, ex Apple.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap">
+<style>
+  /* Layout: deep forest-green editorial page. A huge serif name over a slow ambient glow
+     and film grain, a portrait card, a moving ribbon of focus areas, then large hoverable
+     rows for the LinkedIn sections. Every call to action goes to LinkedIn. */
+  :root {
+    --bg: #0f2418;          /* deep forest */
+    --bg-raised: #163221;
+    --fg: #f1f4ec;
+    --muted: #9fb4a2;
+    --line: rgba(241, 244, 236, 0.12);
+    --accent: #c8e6a0;      /* luminous sage */
+    --glow: #2f6b45;
+    --font-display: "Instrument Serif", "Times New Roman", Georgia, serif;
+    --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: dark;
+  }
+
+  html { scroll-behavior: smooth; }
+  html, body { min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* Ambient glow + grain */
+  .atmos {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .atmos::before {
+    content: "";
+    position: absolute;
+    width: 70vmax;
+    height: 70vmax;
+    top: -25vmax;
+    right: -20vmax;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 62%);
+    opacity: 0.55;
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  .atmos::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+  }
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-12vmax, 14vmax) scale(1.15); }
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Header */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+  }
+  header {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem;
+  }
+  .mark {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1;
+    text-decoration: none;
+  }
+  .mark i { color: var(--accent); }
+  nav { display: flex; align-items: center; gap: 1.75rem; }
+  nav a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--fg); }
+  nav .pill {
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+  }
+  nav .pill:hover { color: var(--bg); background: var(--fg); }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: end;
+    padding-block: clamp(3.5rem, 9vw, 7rem) clamp(3rem, 7vw, 5rem);
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 1.5rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(200, 230, 160, 0.6); }
+    100% { box-shadow: 0 0 0 0.6rem rgba(200, 230, 160, 0); }
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(4.25rem, 15vw, 11.5rem);
+    line-height: 0.82;
+    letter-spacing: -0.035em;
+  }
+  h1 .first { display: block; font-style: italic; color: var(--accent); }
+  h1 .last { display: block; padding-left: clamp(1.5rem, 8vw, 6rem); }
+  .lede {
+    margin: 2.25rem 0 0;
+    max-width: 30rem;
+    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    line-height: 1.45;
+    color: var(--fg);
+  }
+  .lede em { font-family: var(--font-display); font-size: 1.2em; color: var(--accent); }
+  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 2.25rem; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 1.5rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .btn svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
+  .btn .arrow { transition: transform 0.25s; }
+  .btn:hover { background: var(--fg); transform: translateY(-2px); }
+  .btn:hover .arrow { transform: translateX(4px); }
+  .where {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Portrait card */
+  .portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    max-width: 100%;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background:
+      radial-gradient(120% 80% at 30% 20%, #2c5a3c 0%, transparent 60%),
+      linear-gradient(160deg, #1b3a27, #0b1c12);
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    transform: rotate(2deg);
+    box-shadow: 0 2rem 4rem -1.5rem rgba(0, 0, 0, 0.6);
+    transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+  .portrait:hover { transform: rotate(0deg) scale(1.01); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .monogram {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(5rem, 14vw, 9rem);
+    color: var(--accent);
+    opacity: 0.9;
+  }
+  .badge {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Ribbon */
+  .ribbon {
+    position: relative;
+    z-index: 1;
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+    padding-block: 1.1rem;
+    background: color-mix(in srgb, var(--bg-raised) 60%, transparent);
+  }
+  .track {
+    display: flex;
+    width: max-content;
+    animation: scroll 38s linear infinite;
+  }
+  .track span {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1;
+    white-space: nowrap;
+    padding-right: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .track span:nth-child(even) { font-style: italic; color: var(--accent); }
+  .track span::after { content: "✦"; font-size: 0.5em; color: var(--muted); font-style: normal; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* Sections */
+  main { padding-block: clamp(4rem, 9vw, 7rem) 0; display: flex; flex-direction: column; gap: clamp(4.5rem, 10vw, 8rem); }
+  section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+    gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--line);
+    align-self: start;
+  }
+  h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h2 em { color: var(--accent); }
+  .body { display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
+  .body p { margin: 0; max-width: 38rem; color: var(--muted); }
+  .body p strong { color: var(--fg); font-weight: 400; }
+
+  .roles { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .roles a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.4rem 0.25rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: padding 0.3s, background 0.3s;
+  }
+  .roles strong {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .roles span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+  }
+  .roles a:hover { padding-left: 1rem; background: linear-gradient(90deg, rgba(200,230,160,0.06), transparent); }
+  .roles a:hover strong { color: var(--accent); font-style: italic; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; margin: 0; padding: 0; }
+  .tags li {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9375rem;
+    color: var(--fg);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tags li:hover { border-color: var(--accent); color: var(--accent); }
+
+  .text-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .text-link:hover { color: var(--fg); }
+
+  /* Closing */
+  .closing {
+    text-align: left;
+    padding-block: clamp(5rem, 12vw, 9rem) clamp(3rem, 6vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .closing h2 { font-size: clamp(3rem, 10vw, 7.5rem); line-height: 0.9; max-width: 14ch; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: minmax(0, 1fr); align-items: start; }
+    .portrait { max-width: 18rem; order: -1; transform: rotate(-2deg); }
+    section { grid-template-columns: minmax(0, 1fr); }
+    nav a:not(.pill) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+</head>
+<body>
+<div class="atmos" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#top">A<i>M</i></a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a class="pill" href="https://www.linkedin.com/in/agathemonmont" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero" id="top">
+    <div>
+      <p class="eyebrow">AI &amp; Innovation Consultant</p>
+      <h1><span class="first">Agathe</span><span class="last">Monmont</span></h1>
+      <p class="lede">I help organisations turn <em>AI</em> and new ideas into products and results. Formerly at TikTok and Apple.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://www.linkedin.com/in/agathemonmont" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          Connect on LinkedIn
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <span class="where">London, UK</span>
+      </div>
+    </div>
+    <div class="portrait" role="img" aria-label="Portrait of Agathe Monmont">
+      <span class="monogram">AM</span>
+      <div class="badge"><span>Ex TikTok</span><span>Ex Apple</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="track">
+    <span>Artificial Intelligence</span><span>Innovation</span><span>AI Strategy</span><span>Consulting</span><span>London</span>
+    <span>Artificial Intelligence</span><span>Innovation</span><span>AI Strategy</span><span>Consulting</span><span>London</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <main>
+    <section id="about">
+      <div class="label">About</div>
+      <div class="body">
+        <h2>Making <em>AI</em> useful, not just impressive.</h2>
+        <p>I'm an <strong>AI and innovation consultant</strong> based in London. I work with organisations to put AI to work and turn new ideas into real products and results.</p>
+        <p>Before consulting, I worked at <strong>TikTok</strong> and <strong>Apple</strong>.</p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="label">Experience</div>
+      <div class="body">
+        <ul class="roles">
+          <li><a href="https://www.linkedin.com/in/agathemonmont/details/experience/" target="_blank" rel="noopener"><strong>Independent</strong><span>AI &amp; Innovation Consultant</span></a></li>
+          <li><a href="https://www.linkedin.com/in/agathemonmont/details/experience/" target="_blank" rel="noopener"><strong>TikTok</strong><span>Previously</span></a></li>
+          <li><a href="https://www.linkedin.com/in/agathemonmont/details/experience/" target="_blank" rel="noopener"><strong>Apple</strong><span>Previously</span></a></li>
+        </ul>
+        <a class="text-link" href="https://www.linkedin.com/in/agathemonmont/details/experience/" target="_blank" rel="noopener">Full experience on LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="label">Skills</div>
+      <div class="body">
+        <ul class="tags">
+          <li>Artificial Intelligence</li>
+          <li>Innovation</li>
+          <li>AI Strategy</li>
+          <li>Consulting</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="closing" id="contact">
+    <h2>Let's <em>talk</em> about what's next.</h2>
+    <a class="btn" style="align-self:flex-start" href="https://www.linkedin.com/in/agathemonmont" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+      Message me on LinkedIn
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>© 2026 Agathe Monmont</span>
+    <span>London, UK</span>
+  </footer>
+</div>
+</body>
+</html>
